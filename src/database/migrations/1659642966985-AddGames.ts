@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateMessages1626289618299 implements MigrationInterface {
+export class AddGames1659642966985 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "messages",
+                name: "games",
                 columns: [
                     {
                         name: "id",
@@ -13,15 +13,19 @@ export class CreateMessages1626289618299 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: "email",
+                        name: "name",
                         type: "varchar",
                     },
                     {
-                        name: "message",
+                        name: "release_date",
                         type: "varchar"
                     },
                     {
-                        name: "created_at",
+                        name: "cover",
+                        type: "varchar"
+                    },
+                    {
+                        name: "added_at",
                         type: "timestamp",
                         default: "now()"
                     }

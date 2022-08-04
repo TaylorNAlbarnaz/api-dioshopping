@@ -1,17 +1,22 @@
 import { Router, Request, Response } from "express";
-import { CreateMessageController } from "./controllers/CreateMessageController";
-import { ListMessageController } from "./controllers/ListMessageController";
+import { CreateGameController } from "./controllers/CreateGameController";
+import { ListGameController } from "./controllers/ListGameController";
 
 const router = Router();
 
-const createMessageController = new CreateMessageController();
-const listMessageController = new ListMessageController();
+const createGameController = new CreateGameController();
+const listGameController = new ListGameController();
 
 router.get('/', (request: Request, response: Response) => {
-    return response.json({message: 'Bem vindo a API Dio Shopping'})
+    return response.json(
+        {
+            message: 'Bem vindo a API para listagem de jogos da franquia Grand Theft Auto',
+            hint: 'Utilize a rota /gamelist para ver e adicionar jogos a lista'
+        }
+    )
 })
 
-router.get('/message', listMessageController.hanle)
-router.post('/message', createMessageController.handle)
+router.get('/gamelist', listGameController.handle)
+router.post('/gamelist', createGameController.handle)
 
 export { router }
